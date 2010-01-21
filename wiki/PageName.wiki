@@ -3,7 +3,11 @@
 
 = Introduction =
 
-Add your content here.
+Each key can have only one flag  Each flag and key holds a version number, flag has newer version than key - cache miss  Doesn't delete all keys related to flag, only invalidates  Only tries to initiate memcache connection once - cache miss returned at once on later requests 
+
+= Features =
+
+
 
 
 = Example usage =
