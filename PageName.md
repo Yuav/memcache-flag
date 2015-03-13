@@ -1,0 +1,24 @@
+# Introduction #
+
+Each key can have only one flag  Each flag and key holds a version number, flag has newer version than key - cache miss  Doesn't delete all keys related to flag, only invalidates  Only tries to initiate memcache connection once - cache miss returned at once on later requests
+
+# Features #
+
+**Each key can have only one flag** Each flag and key holds a version number, flag has newer version than key - cache miss  **Doesn't delete all keys related to flag, only invalidates** Only tries to initiate memcache connection once - cache miss returned at once on later requests
+
+
+# Example usage #
+```
+
+require_once 'cache.class.php';
+$cache = new cache(array('127.0.0.1'));
+$value = rand(3,123);
+echo 'set data: '.$value.' returned ';
+if ($cache->set('test',$value,5,'test_flag')) echo "TRUE<br />";
+echo 'before: '.$cache->get('test')."<br />";
+echo "flag value: ".$cache->get('test_flag').' invalidated value: '.$cache->invalidate('test_flag')."<br />";
+echo 'after: '.$cache->get('test')."<br />";
+
+// For completeness
+$cache->delete('test_flag');
+```
